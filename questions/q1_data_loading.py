@@ -18,6 +18,7 @@ def get_standard_column_map(df):
 def standardize_dataframe_columns(df):
     return df.rename(columns=get_standard_column_map(df))
 
+#Filling missing or blank values in the Province/State column with "All Provinces"
 def clean_province_column(df):
     if "Province/State" in df.columns:
         df["Province/State"] = df["Province/State"].fillna("All Provinces")
