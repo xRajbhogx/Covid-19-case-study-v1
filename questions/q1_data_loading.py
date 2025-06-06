@@ -43,10 +43,9 @@ def load_and_prepare_datasets():
         return None, None, None
 
 # Q1: Data Loading Section
-def show_data_loading_section():
-    confirmed_df, deaths_df, recovered_df = load_and_prepare_datasets()
-    
+def show_data_loading_section(confirmed_df, deaths_df, recovered_df):
     if confirmed_df is None or deaths_df is None or recovered_df is None:
+        st.error("Dataset files not found or error loading data.")
         st.stop()
     
     st.header("📥 Question 1: Data Loading")
@@ -60,6 +59,13 @@ deaths_df = pd.read_csv('covid_19_deaths_v1.csv')
 recovered_df = pd.read_csv('covid_19_recovered_v1.csv')
         """, language="python")
     
+    # Add dropdown for selecting number of rows to display
+    num_rows = st.selectbox(
+        "Select number of rows to display:",
+        options=[5, 10, 20, 50, 100],
+        index=0
+    )
+    
     tab1, tab2, tab3 = st.tabs(["✅ Confirmed Cases", "💀 Deaths", "💚 Recovered"])
     for df, tab, name in zip([confirmed_df, deaths_df, recovered_df], [tab1, tab2, tab3], ["Confirmed", "Deaths", "Recovered"]):
         with tab:
@@ -71,4 +77,4 @@ recovered_df = pd.read_csv('covid_19_recovered_v1.csv')
                 st.metric("Columns", df.shape[1])
             with col3:
                 st.metric("Countries", df["Country/Region"].nunique())
-            st.dataframe(df.head(), use_container_width=True)
+            st.dataframe(df.head(num_rows), use_container_width=True)
