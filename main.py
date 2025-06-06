@@ -17,7 +17,8 @@ from questions.q5_independent_analysis import show_independent_analysis_section
 from questions.q6_data_transformation import show_data_transformation_section
 from questions.q7_data_merging import show_data_merging_section
 from questions.q8_combined_analysis import show_combined_analysis_section
-from questions.q9_ai_insights import show_ai_insights_section  # Add this import
+from questions.q9_ai_insights import show_ai_insights_section
+from questions.summary_insights import show_summary_insights_section  # Add this import
 
 st.set_page_config(
     page_title="COVID-19 Data Analysis",
@@ -32,7 +33,8 @@ st.divider()
 st.sidebar.title("📊 Navigation")
 question_list = [
     "🏠 Overview",
-    "🤖 AI Data Assistant",  # Move AI feature here, right after overview
+    "📊 Executive Summary",  # Add this new page
+    "🤖 AI Data Assistant",
     "📥 Q1: Data Loading",
     "🔍 Q2: Data Exploration", 
     "🧹 Q3: Handling Missing Data",
@@ -185,6 +187,10 @@ if selected_question == "🏠 Overview":
         
         st.info("**Analysis by Pushkar Shukla**")
         st.warning("⚠️ **AI-Assisted Project**")
+
+elif selected_question == "📊 Executive Summary":
+    # Call the summary insights function
+    show_summary_insights_section(confirmed_df, deaths_df, recovered_df)
 
 elif selected_question == "🤖 AI Data Assistant":
     # Call the AI insights function
