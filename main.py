@@ -141,14 +141,32 @@ if selected_question == "🏠 Overview":
         - **Confirmed Cases Dataset:** Cumulative confirmed COVID-19 cases (Jan 22, 2020 - May 29, 2021)
         - **Deaths Dataset:** Cumulative deaths attributed to COVID-19
         - **Recovered Cases Dataset:** Cumulative recoveries from COVID-19
+        
         Each dataset includes Province/State, Country/Region, coordinates (Lat, Long), and daily cumulative totals.
         """)
+        
+        # Add AI Assistance Disclaimer
+        st.subheader("🤖 AI Assistance Acknowledgment")
+        st.info("""
+        **Important Note:** This project is not completely made by me, a lot of help from AI has been used.
+        The AI assistance included:
+        
+        - Code optimization and debugging
+        - Data visualization enhancement
+        - Documentation and commenting
+        - Problem-solving approaches
+        - Best practices implementation
+        
+        I don't know much about all the libraries, hence I have used AI a lot to help me with this project.
+        """)
+        
     with col2:
         st.subheader("📈 Dataset Summary")
         st.metric("Confirmed Dataset", f"{confirmed_df.shape[0]} rows", f"{confirmed_df.shape[1]} columns")
         st.metric("Deaths Dataset", f"{deaths_df.shape[0]} rows", f"{deaths_df.shape[1]} columns")
         st.metric("Recovered Dataset", f"{recovered_df.shape[0]} rows", f"{recovered_df.shape[1]} columns")
         st.info("**Analysis by Pushkar Shukla**")
+        st.warning("⚠️ **AI-Assisted Project**: This work was completed with substantial AI support")
 
 elif selected_question == "📥 Q1: Data Loading":
     # Call the modular function from questions folder
