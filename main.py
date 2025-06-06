@@ -17,6 +17,7 @@ from questions.q5_independent_analysis import show_independent_analysis_section
 from questions.q6_data_transformation import show_data_transformation_section
 from questions.q7_data_merging import show_data_merging_section
 from questions.q8_combined_analysis import show_combined_analysis_section
+from questions.q9_ai_insights import show_ai_insights_section  # Add this import
 
 st.set_page_config(
     page_title="COVID-19 Data Analysis",
@@ -31,6 +32,7 @@ st.divider()
 st.sidebar.title("📊 Navigation")
 question_list = [
     "🏠 Overview",
+    "🤖 AI Data Assistant",  # Move AI feature here, right after overview
     "📥 Q1: Data Loading",
     "🔍 Q2: Data Exploration", 
     "🧹 Q3: Handling Missing Data",
@@ -135,6 +137,14 @@ if selected_question == "🏠 Overview":
         on confirmed cases, recoveries, and deaths, policymakers and health professionals can make informed 
         decisions to control the spread of the virus and allocate resources effectively.
         """)
+        
+        st.subheader("🚀 Special Features")
+        st.success("""
+        **🤖 AI Data Assistant:** This project includes an interactive AI assistant that can answer 
+        any questions about the COVID-19 data in real-time. Ask about trends, comparisons, statistics, 
+        or any insights you're curious about!
+        """)
+        
         st.subheader("📊 Dataset Details")
         st.markdown("""
         This case study utilizes three key datasets, each providing daily updates on different aspects of the pandemic:
@@ -148,8 +158,8 @@ if selected_question == "🏠 Overview":
         # Add AI Assistance Disclaimer
         st.subheader("🤖 AI Assistance Acknowledgment")
         st.info("""
-        **Important Note:** This project is not completely made by me, a lot of help from AI has been used.
-        The AI assistance included:
+        **Important Note:** This project was developed with significant assistance from AI tools and technologies. 
+        While the analysis, insights, and learning outcomes are genuine, substantial help was taken from AI for:
         
         - Code optimization and debugging
         - Data visualization enhancement
@@ -157,7 +167,8 @@ if selected_question == "🏠 Overview":
         - Problem-solving approaches
         - Best practices implementation
         
-        I don't know much about all the libraries, hence I have used AI a lot to help me with this project.
+        This project represents a collaborative effort between human learning and AI assistance, 
+        demonstrating modern data science development practices.
         """)
         
     with col2:
@@ -165,12 +176,23 @@ if selected_question == "🏠 Overview":
         st.metric("Confirmed Dataset", f"{confirmed_df.shape[0]} rows", f"{confirmed_df.shape[1]} columns")
         st.metric("Deaths Dataset", f"{deaths_df.shape[0]} rows", f"{deaths_df.shape[1]} columns")
         st.metric("Recovered Dataset", f"{recovered_df.shape[0]} rows", f"{recovered_df.shape[1]} columns")
+        
+        # Add feature highlight
+        st.markdown("### 🌟 Key Features")
+        st.success("🤖 **AI Assistant**\nInteractive data insights")
+        st.info("📊 **8 Analysis Questions**\nComprehensive data exploration")
+        st.warning("📈 **Visual Analytics**\nInteractive charts & graphs")
+        
         st.info("**Analysis by Pushkar Shukla**")
-        st.warning("⚠️ **AI-Assisted Project**: This work was completed with substantial AI support")
+        st.warning("⚠️ **AI-Assisted Project**")
+
+elif selected_question == "🤖 AI Data Assistant":
+    # Call the AI insights function
+    show_ai_insights_section(confirmed_df, deaths_df, recovered_df)
 
 elif selected_question == "📥 Q1: Data Loading":
     # Call the modular function from questions folder
-    show_data_loading_section()
+    show_data_loading_section(confirmed_df, deaths_df, recovered_df)
 
 elif selected_question == "🔍 Q2: Data Exploration":
     # Call the modular function from questions folder

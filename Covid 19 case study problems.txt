@@ -1,0 +1,8 @@
+2.1 rows and data type missing
+2.2 10 ke baaad mai colour change na ho rahai # ye theek ho gaya dusre wale code mai
+3 samajh na aaya
+6.1 wide format to long format mai siraf 8 columns ka data hai and siraf 22/01/2020 ka data haii
+7.1 10 columns and 22/01/2020 ka hii data show ho raha haii
+7.2 graph change kar sakte and current wale graph mai siraf top 5 countries ka hii graph baan raha haii baki ye doubt hai ki merged data set se hii values lii hai ki nahi
+
+7.2 7.3 8.1 and 8.2 mai doubt hai ki values merged dataset se pick kari hai ya nahii
